@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/Pods-freelancer/Pods-freelancer-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
+${PODS_ROOT}/CometChatCalls/Vendors/WebRTC.framework
+${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework
+${BUILT_PRODUCTS_DIR}/MOLH/MOLH.framework
+${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/CometChatCalls/CometChatProCalls.framework/CometChatProCalls
+${PODS_XCFRAMEWORKS_BUILD_DIR}/CometChatPro/CometChatPro.framework/CometChatPro
