@@ -32,7 +32,7 @@ class notificationViewController: UIViewController,UITableViewDelegate,UITableVi
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            
-           tableView.backgroundColor = UIColor(hex: 0xE6FAF0)
+         
            let cell = tableView.dequeueReusableCell(withIdentifier: "mCell")
            let contentView = cell?.contentView
            
@@ -66,7 +66,7 @@ class notificationViewController: UIViewController,UITableViewDelegate,UITableVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mSegue"{
-            let destination = segue.destination as! quesViewController
+            let destination = segue.destination as! offredetailsaccept
             destination.userviewmodelm = userviewmodelm
             destination.question = movie
         }
@@ -74,7 +74,7 @@ class notificationViewController: UIViewController,UITableViewDelegate,UITableVi
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
                     //film.remove(at: indexPath.row)
-            self.present(Alert.makeActionAlert(titre: "Success", message:  "Do you want to Delete Question ", action: UIAlertAction(title: "Delete", style: .default, handler: { action in
+            self.present(Alert.makeActionAlert(titre: "Success", message:  "Do you want to Delete Offre ? ", action: UIAlertAction(title: "Delete", style: .default, handler: { action in
         
                 self.questionviewmodel.deletequestion(id: (self.filteredData[indexPath.row]._id)!)
               
@@ -88,7 +88,9 @@ class notificationViewController: UIViewController,UITableViewDelegate,UITableVi
         
     }
     
+
     
+    @IBOutlet weak var imageuser: UIImageView!
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          movie = filteredData[indexPath.row]
         performSegue(withIdentifier: "mSegue", sender: nil)
@@ -123,12 +125,15 @@ class notificationViewController: UIViewController,UITableViewDelegate,UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        // Do any additional setup after loading the view.
-        var path = String("http://localhos:3000/"+(self.userviewmodelm.userToken?.imageUrl)!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-
-              path = path.replacingOccurrences(of: "%5C", with: "/", options: NSString.CompareOptions.literal, range: nil)
+        var path = String("http://localhost:3000/"+(self.userviewmodelm.userToken?.imageUrl)!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        path = path.replacingOccurrences(of: "%5C", with: "/", options: NSString.CompareOptions.literal, range: nil)
                let url = URL(string: path)!
                print(url)
+        imageuser.layer.masksToBounds = false
+        imageuser.layer.borderColor = UIColor.black.cgColor
+        imageuser.layer.cornerRadius = imageuser.frame.height/2
+        imageuser.clipsToBounds = true
+        imageuser.af.setImage(withURL: url)
     
         questionviewmodel.getOwnerToy(successHandler: {anomalyList in
                     
@@ -153,7 +158,7 @@ class notificationViewController: UIViewController,UITableViewDelegate,UITableVi
         refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
      
         refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Weather Data ...")
+        refreshControl.attributedTitle = NSAttributedString(string: "Reload Data ...")
     }
     
 

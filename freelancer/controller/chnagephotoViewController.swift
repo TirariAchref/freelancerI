@@ -17,7 +17,6 @@ class chnagephotoViewController: UIViewController,UINavigationControllerDelegate
         
         
         
-        grandimage.layer.borderWidth = 1
         grandimage.layer.masksToBounds = false
         grandimage.layer.borderColor = UIColor.black.cgColor
         grandimage.layer.cornerRadius = grandimage.frame.height/2

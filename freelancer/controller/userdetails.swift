@@ -1,20 +1,20 @@
 //
-//  quesViewController.swift
-//  doctor
+//  userdetails.swift
+//  freelancer
 //
-//  Created by User on 01.01.2022.
+//  Created by User on 27.06.2022.
 //
 
 import UIKit
 import Cosmos
 import TinyConstraints
-class quesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource  {
+class userdetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var userviewmodelm = userVM()
     var questionviewmodel = offreVM()
     var question : Offre?
+    var useraccep : Userr?
     var usertable : Userr?
-    var filteredData = [Offre]()
-    
+    var filteredData = [Userr]()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            
         return filteredData.count//6 elements
@@ -35,16 +35,16 @@ class quesViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
            let text = contentView?.viewWithTag(3) as! UILabel
            let imageView = contentView?.viewWithTag(2) as! UIImageView
            let Time = contentView?.viewWithTag(4) as! UILabel
-           let Price = contentView?.viewWithTag(5) as! UILabel
+        
            imageView.layer.masksToBounds = false
            imageView.layer.borderColor = UIColor.black.cgColor
            imageView.layer.cornerRadius = imageView.frame.height/2
            imageView.clipsToBounds = true
-           Time.text = "Time :" +  filteredData[indexPath.row].Time!
-           Price.text = "Price :" +  filteredData[indexPath.row].Price!
-           label.text = filteredData[indexPath.row].subject
-           text.text = filteredData[indexPath.row].description
-           userviewmodelm.getOwnerToy(OwnerId: (filteredData[indexPath.row].UserId)! , successHandler: {anomalyList in
+           Time.text = "Phone :" +  filteredData[indexPath.row].phone!
+       
+           label.text = filteredData[indexPath.row].nom
+           text.text = "Email :" +  filteredData[indexPath.row].email!
+           userviewmodelm.getOwnerToy(OwnerId: (filteredData[indexPath.row]._id)! , successHandler: {anomalyList in
                self.usertable = anomalyList
                print("alamofire :")
                print(self.usertable!)
@@ -72,40 +72,17 @@ class quesViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
            return
        }
 
-    @IBOutlet weak var reponse: UIButton!
-    lazy var cosmosView : CosmosView = {
-            var view = CosmosView()
-            //maadch aandk l hak t modifi
-            //view.settings.updateOnTouch = false
-            view.settings.fillMode = .half
-            view.settings.starMargin = 4
-            return view
-        }()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        filteredData.append(question!)
-       
      
+        filteredData.append(useraccep!)
+        // Do any additional setup after loading the view.
     }
     
-
-   
-    @IBAction func reponsebutton(_ sender: Any) {
-        questionviewmodel.updadteoffre(id: (question?._id!)!, UserId: (question?.UserId)!, subject: (question?.subject)!, description: (question?.description)!, Price: (question?.Price)!, Status: "true", Time: (question?.Time)!, imageClient: (question?.imageClient)!, UserIdAccept: (userviewmodelm.userToken?._id)!)
-        prompt(title: "Succes", message: "Offre Updated successfully")
-                                       
-    }
     
   
-    func prompt(title: String, message: String) {
-           
-           let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-           
-           let action = UIAlertAction(title: "Got it", style: .default, handler: nil)
-           
-           alert.addAction(action)
-           self.present(alert, animated: true, completion: nil)
-           
-       }
+ 
+
+
 }

@@ -10,7 +10,7 @@ import UIKit
 class accountconfigViewController: UIViewController {
     var userviewmodelm = userVM()
     var user : Userr?
-    @IBOutlet weak var number: UITextField!
+
     @IBAction func update(_ sender: Any) {
         if(password.text == "" && conpassword.text == ""  ) {
             userviewmodelm.updateuserpass(id: (userviewmodelm.userToken?._id)!, nom: name.text!, prenom: name.text!, email: (userviewmodelm.userToken?.email)!
@@ -42,7 +42,7 @@ class accountconfigViewController: UIViewController {
         super.viewDidLoad()
        
         name.text = userviewmodelm.userToken?.nom
-        number.text = userviewmodelm.userToken?.phone
+  
         
         
     }

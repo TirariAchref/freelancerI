@@ -1,20 +1,21 @@
 //
-//  quesViewController.swift
-//  doctor
+//  offredetailsaccept.swift
+//  freelancer
 //
-//  Created by User on 01.01.2022.
+//  Created by User on 27.06.2022.
 //
 
 import UIKit
 import Cosmos
 import TinyConstraints
-class quesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource  {
+class offredetailsaccept: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var userviewmodelm = userVM()
     var questionviewmodel = offreVM()
     var question : Offre?
     var usertable : Userr?
+    var useraccp : Userr?
+    var usersend : Userr?
     var filteredData = [Offre]()
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            
         return filteredData.count//6 elements
@@ -27,7 +28,7 @@ class quesViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            
-           
+         
            let cell = tableView.dequeueReusableCell(withIdentifier: "mCell")
            let contentView = cell?.contentView
            
@@ -72,31 +73,41 @@ class quesViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
            return
        }
 
-    @IBOutlet weak var reponse: UIButton!
-    lazy var cosmosView : CosmosView = {
-            var view = CosmosView()
-            //maadch aandk l hak t modifi
-            //view.settings.updateOnTouch = false
-            view.settings.fillMode = .half
-            view.settings.starMargin = 4
-            return view
-        }()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         filteredData.append(question!)
-       
-     
+        userviewmodelm.getOwnerToy(OwnerId: (question?.UserIdAccept)! , successHandler: {anomalyList in
+            print("//////////////////////////////////////")
+            print(anomalyList)
+            self.useraccp  = anomalyList
+      
+         
+                }, errorHandler: {
+                    print("errorororoor")
+                })
+        // Do any additional setup after loading the view.
     }
     
-
-   
+    
     @IBAction func reponsebutton(_ sender: Any) {
-        questionviewmodel.updadteoffre(id: (question?._id!)!, UserId: (question?.UserId)!, subject: (question?.subject)!, description: (question?.description)!, Price: (question?.Price)!, Status: "true", Time: (question?.Time)!, imageClient: (question?.imageClient)!, UserIdAccept: (userviewmodelm.userToken?._id)!)
-        prompt(title: "Succes", message: "Offre Updated successfully")
+        if(question?.Status == "false"){
+            prompt(title: "Offre", message: "Offre Didn't Accepted Yet")
+        }else{
+            performSegue(withIdentifier: "acceptedby", sender: nil)
+        }
+     
                                        
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "acceptedby"{
+            let destination = segue.destination as! userdetails
+            destination.userviewmodelm = userviewmodelm
+            destination.question = question
+            destination.useraccep = useraccp
+          
+        }
+    }
   
     func prompt(title: String, message: String) {
            
@@ -108,4 +119,7 @@ class quesViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
            self.present(alert, animated: true, completion: nil)
            
        }
+    
+
+
 }

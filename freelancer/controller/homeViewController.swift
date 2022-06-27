@@ -29,6 +29,7 @@ class homeViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var filteredData = [Offre]()
     var usertable : Userr?
     
+    @IBOutlet weak var imageuser: UIImageView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            
         return filteredData.count//6 elements
@@ -41,7 +42,7 @@ class homeViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            
-           tableView.backgroundColor = UIColor(hex: 0xE6FAF0)
+         
            let cell = tableView.dequeueReusableCell(withIdentifier: "mCell")
            let contentView = cell?.contentView
            
@@ -110,7 +111,16 @@ class homeViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
        
         // Do any additional setup after loading the view.
      sleep(1)
-       
+        var path = String("http://localhost:3000/"+(self.userviewmodelm.userToken?.imageUrl)!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        path = path.replacingOccurrences(of: "%5C", with: "/", options: NSString.CompareOptions.literal, range: nil)
+               let url = URL(string: path)!
+               print(url)
+        
+        imageuser.layer.masksToBounds = false
+        imageuser.layer.borderColor = UIColor.black.cgColor
+        imageuser.layer.cornerRadius = imageuser.frame.height/2
+        imageuser.clipsToBounds = true
+        imageuser.af.setImage(withURL: url)
        
           
         questionviewmodel.getOwnerToy(successHandler: {anomalyList in
@@ -136,7 +146,7 @@ class homeViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
      
         refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Weather Data ...")
+        refreshControl.attributedTitle = NSAttributedString(string: "Reload Data ...")
     }
    
     @objc private func refreshWeatherData(_ sender: Any) {

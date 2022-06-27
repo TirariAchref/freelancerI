@@ -10,9 +10,25 @@ import Alamofire
 import CometChatPro
 class mailViewController: UIViewController {
 
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var image: UIImageView!
     var userviewmodelm = userVM()
     override func viewDidLoad() {
         super.viewDidLoad()
+        var path = String("http://localhost:3000/"+(self.userviewmodelm.userToken?.imageUrl)!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        path = path.replacingOccurrences(of: "%5C", with: "/", options: NSString.CompareOptions.literal, range: nil)
+               let url = URL(string: path)!
+               print(url)
+        
+        image.layer.masksToBounds = false
+        image.layer.borderColor = UIColor.black.cgColor
+        image.layer.cornerRadius = image.frame.height/2
+        image.clipsToBounds = true
+        image.af.setImage(withURL: url)
+        name.text = (userviewmodelm.userToken?.nom)!
+    }
+    
+    @IBAction func button(_ sender: Any) {
         let uid    = userviewmodelm.userToken?.phone
         let authKey = "4335de000f7d766c122f24d76b705efd5b45c133"
 
@@ -23,9 +39,8 @@ class mailViewController: UIViewController {
         }
         DispatchQueue.main.async {
         let cometChatUI = CometChatUI()
-        cometChatUI.setup(withStyle: .pageSheet)
+        cometChatUI.setup(withStyle: .formSheet)
         self.present(cometChatUI, animated: true, completion: nil)
         }
     }
-    
 }

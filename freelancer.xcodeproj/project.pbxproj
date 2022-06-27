@@ -866,6 +866,8 @@
 		CE6329DE286784DF00E358AA /* newquestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6329DA286784DE00E358AA /* newquestionViewController.swift */; };
 		CE6329DF286784DF00E358AA /* quesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6329DB286784DE00E358AA /* quesViewController.swift */; };
 		CE6329E0286784DF00E358AA /* notificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6329DC286784DF00E358AA /* notificationViewController.swift */; };
+		CEEA371628691D1300F5440E /* offredetailsaccept.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA371528691D1300F5440E /* offredetailsaccept.swift */; };
+		CEEA371828691F2500F5440E /* userdetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA371728691F2500F5440E /* userdetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1769,6 +1771,8 @@
 		CE6329DA286784DE00E358AA /* newquestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newquestionViewController.swift; sourceTree = "<group>"; };
 		CE6329DB286784DE00E358AA /* quesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = quesViewController.swift; sourceTree = "<group>"; };
 		CE6329DC286784DF00E358AA /* notificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = notificationViewController.swift; sourceTree = "<group>"; };
+		CEEA371528691D1300F5440E /* offredetailsaccept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offredetailsaccept.swift; sourceTree = "<group>"; };
+		CEEA371728691F2500F5440E /* userdetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userdetails.swift; sourceTree = "<group>"; };
 		DCD9D56C1F6D7A9B65FF1655 /* Pods-freelancerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-freelancerTests.release.xcconfig"; path = "Target Support Files/Pods-freelancerTests/Pods-freelancerTests.release.xcconfig"; sourceTree = "<group>"; };
 		E2C4049F7AF67E451A83A290 /* Pods-freelancer-freelancerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-freelancer-freelancerUITests.release.xcconfig"; path = "Target Support Files/Pods-freelancer-freelancerUITests/Pods-freelancer-freelancerUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3784,6 +3788,8 @@
 				CE63267C28677B0C00E358AA /* LaunchViewController.swift */,
 				CE63267728677B0C00E358AA /* Launch2ViewController.swift */,
 				CE63267828677B0C00E358AA /* Launch3ViewController.swift */,
+				CEEA371528691D1300F5440E /* offredetailsaccept.swift */,
+				CEEA371728691F2500F5440E /* userdetails.swift */,
 				CE63267A28677B0C00E358AA /* OnBoardViewController.swift */,
 				CE63267428677B0C00E358AA /* welcomeViewController.swift */,
 				CE63267B28677B0C00E358AA /* tabbarViewController.swift */,
@@ -4788,6 +4794,7 @@
 				CE6328AB28677B0D00E358AA /* GIFAnimatedImage.swift in Sources */,
 				CE6328A828677B0D00E358AA /* ImageProcessor.swift in Sources */,
 				CE6327FC28677B0D00E358AA /* CometChatUserListItem.swift in Sources */,
+				CEEA371828691F2500F5440E /* userdetails.swift in Sources */,
 				CE63226D2867739300E358AA /* SceneDelegate.swift in Sources */,
 				CE63278828677B0C00E358AA /* CometChatMessageReactions.swift in Sources */,
 				CE63286328677B0D00E358AA /* Animator.swift in Sources */,
@@ -4853,6 +4860,7 @@
 				CE6327C928677B0D00E358AA /* CometChatStatusIndicator.swift in Sources */,
 				CE6328B028677B0D00E358AA /* Indicator.swift in Sources */,
 				CE63282A28677B0D00E358AA /* UIViewController+Extensions.swift in Sources */,
+				CEEA371628691D1300F5440E /* offredetailsaccept.swift in Sources */,
 				CE6328B528677B0D00E358AA /* ExtensionHelpers.swift in Sources */,
 				CE6327F228677B0D00E358AA /* CometChatBannedMembers.swift in Sources */,
 				CE6328AD28677B0D00E358AA /* UIButton+Cometfisher.swift in Sources */,
